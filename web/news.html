@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>新闻</title>
+		<link rel="stylesheet" href="css/layui.css" media="all">
+		<link rel="stylesheet" href="css/box/base.css" />
+
+
+	</head>
+
+	<body>
+		<!--引入导航栏-->
+		<div class="header"></div>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+			<legend>资讯服务</legend>
+		</fieldset>
+
+		<div class="layui-tab layui-tab-brief">
+			<ul class="layui-tab-title">
+				<li id="hotNews" class="layui-this">热门资讯</li>
+				<li id="businessNews">创业资讯</li>
+				<li id="socialNews">社会百态</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">
+					<div class="box">
+						<table class="layui-table hotNews" lay-skin="nob" id="test">
+						</table>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="box">
+					<table class="layui-table businessNews" lay-skin="nob" >
+					</table>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="box">
+					<table class="layui-table socialNews" lay-skin="nob">
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="footer"></div>
+
+
+<script src="js/jquery-2.1.0.min.js"></script>
+		<script src="layui.js"></script>
+
+		<script type="text/javascript">
+			var hotNews1 = document.getElementById('hotNews').innerText;
+				layui.use('table', function(){
+					var table = layui.table;
+					table.render({
+						elem: '#test',
+						page: 2,
+						limit:5,
+
+					    url:'hotNews.do?type='+hotNews1,
+						limits:[5,10],
+						cols: [[
+							{field:'time', width:150, title: '日期'}
+							,{field:'title', width:200, title: '题目'}
+							,{field:'content', title: '内容'}
+						]]
+						,page: true
+					});
+				});
+
+		</script>
+
+
+	<script type="text/javascript">
+
+		$(".header").load("header.html");
+		$(".footer").load("footer.html");
+
+	</script>
+
+
+	</body>
+
+</html>

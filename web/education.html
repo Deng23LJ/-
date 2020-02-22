@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>教育服务</title>
+		<link rel="stylesheet" href="css/layui.css" media="all">
+		<style type="text/css">
+			.myinput {
+				width: 500px;
+				display: inline-block;
+				margin-right: 20px;
+			}
+
+			.change {
+				width: 1000px;
+				margin: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--引入导航栏-->
+		<div class="header"></div>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+			<legend>教育服务</legend>
+		</fieldset>
+
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<label class="layui-form-label">姓名</label>
+				<div class="layui-input-block">
+					<input type="text" name="title" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">性别</label>
+				<div class="layui-input-block">
+					<input type="radio" name="sex" value="男" title="男">
+					<input type="radio" name="sex" value="女" title="女" checked>
+				</div>
+			</div>
+
+			<div class="layui-inline">
+				<label class="layui-form-label">年龄</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" id="test30" placeholder="yyyy-MM-dd">
+				</div>
+			</div>
+			<br />
+			<br />
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">学历</label>
+				<div class="layui-input-block">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">初中</option>
+						<option value="1">大专</option>
+						<option value="2">本科</option>
+						<option value="3">硕士</option>
+						<option value="4">博士</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">应聘岗位</label>
+				<div class="layui-input-block">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">软件工程师</option>
+						<option value="1">硬件工程师</option>
+						<option value="2">销售经理</option>
+						<option value="3">策划</option>
+						<option value="4">前台</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">兴趣爱好</label>
+				<div class="layui-input-block">
+					<input type="checkbox" name="like[write]" title="球类运动">
+					<input type="checkbox" name="like[read]" title="阅读" checked>
+					<input type="checkbox" name="like[dai]" title="其他">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">从业经历</label>
+				<div class="layui-input-block">
+					<textarea name="desc" placeholder="" class="layui-textarea"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+
+		</form>
+
+
+		<div class="footer"></div>
+
+		<script type="text/javascript">
+			//Demo
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+
+				//自定义颜色
+				laydate.render({
+					elem: '#test30',
+					theme: 'blue'
+				});
+
+			});
+
+			layui.use('form', function() {
+				var form = layui.form;
+
+				//监听提交
+				form.on('submit(formDemo)', function(data) {
+					layer.msg(JSON.stringify(data.field));
+					return false;
+				});
+			});
+		</script>
+
+		<script src="layui.js"></script>
+		<script src="js/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header.html");
+				$(".footer").load("footer.html");
+			})
+		</script>
+
+	</body>
+
+</html>

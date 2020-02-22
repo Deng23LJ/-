@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>民众建议</title>
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/">
+</head>
+<body>
+
+
+<div class="header"></div>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+    <legend>民众建议</legend>
+</fieldset>
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">建议</label>
+        <div class="layui-input-block">
+            <textarea name="content" placeholder="请输入内容" id="contents" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal suggestion" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+
+<div class="footer"></div>
+
+
+<script src="js/jquery-2.1.0.min.js"></script>
+<script src="layui.js"></script>
+<script type="text/javascript">
+
+
+    $(".suggestion").click(function () {
+        var content = $("#contents").val();
+        if (content == ''){
+            alert("请填入建议");
+            return
+        }else{
+            $.post(
+                "suggestion.do",
+                {"content": content},
+                function (data) {
+                    if (data == 0) {
+                        alert("你还没有登录，不能评论！");
+                    }else{
+                        alert("感谢你的建议");
+                        window.location.href = "interaction.html"
+                    }
+                },
+                "json"
+            )
+        }
+        })
+
+    $(".header").load("header.html");
+    $(".footer").load("footer.html");
+</script>
+
+
+</body>
+</html>

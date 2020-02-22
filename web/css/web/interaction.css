@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* LLK CSS Document */
+
+/*shengzhangrexian*/
+.common_tab { height: 45px; line-height: 45px;border-bottom: 1px #BFC3CB solid;}
+.tab_ul4 { top: 0px; left: 12px; }
+.tab_ul4 li { float: left; height: 41px; line-height: 41px; }
+.tab_ul4 li a { display: inline-block; text-align: center; cursor: pointer; margin-right: 50px;  font-size: 18px;color: #909399;transition: 0s}
+.tab_ul4 li.selectTag a { color: #5d5e5f;font-weight: bold;transition: 0s; border-bottom: 4px #FF5B24 solid;}
+
+/*zhengwugongkai-quanzeqingdan*/
+.common_tab2 { height: 45px; line-height: 45px;}
+.tab_ul3 { top: 0px; left: 12px; }
+.tab_ul3 li { float: left; height: 41px; line-height: 41px; width: 25%;}
+.tab_ul3 li a { display: inline-block; text-align: center; cursor: pointer;   font-size: 16px;color: #909399;transition: 0s;text-align: center;width: 99%;background-color: #f1f1f1;}
+.tab_ul3 li.selectTag a { color: #fff;font-weight: normal;transition: 0s; background-color: #10a0e8;}
+
+/*bumenshouye*/
+.common_tab3 { height: 50px; line-height: 50px; border-bottom: 1px #BFC3CB solid; top: -50px;}
+.tab_ul2 { top: 0px; left: 12px; }
+.tab_ul2 li { float: left; height: 46px; line-height: 46px; }
+.tab_ul2 li a { display: inline-block;  cursor: pointer; margin-right: 2px; padding: 0px 0px; font-size: 16px; color: #6A6A6B; transition: 0s; background: #d4e2f6;width: 147px;text-align: center;border-top: 4px #d4e2f6 solid;}
+.tab_ul2 li.selectTag a { color: #5d5e5f;  border-top: 4px #ff5b24 solid; transition: 0s; background-color: #fff;}
+
+.zong_tagContent .tagContent { display: none; }
+.zong_tagContent .selectTag { display: block; }

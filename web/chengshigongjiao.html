@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>城市公交</title>
+    <link rel="stylesheet" href="css/layui.css" media="all">
+    <link rel="stylesheet" href="css/box/base.css">
+
+
+</head>
+
+<body>
+<!--引入导航栏-->
+<div class="header"></div>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+    <legend>城市公交</legend>
+</fieldset>
+
+<div class="box">
+    <table class="layui-table showInsurance" lay-skin="line">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>保险编号</th>
+            <th>保险类型</th>
+            <th>担保人</th>
+            <th>保险期限</th>
+            <th>起保日期</th>
+            <th>失效日期</th>
+            <th>保险状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div style="text-align: center;">
+    <a href="insure.html">
+        <button class="layui-btn layui-btn-warm">办理保险</button>
+    </a>
+</div>
+
+
+<div class="footer"></div>
+
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+    var hint = null;
+    $(function() {
+        $.post(
+            "showInsurance.do",
+            function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var tr = '<tr>' +
+                        '<td>' + data[i].id + '</td>' +
+                        '<td>' + data[i].type + '</td>' +
+                        '<td>' + data[i].guarantor + '</td>' +
+                        '<td>' + data[i].time + '</td>' +
+                        '<td>' + data[i].beginTime + '</td>' +
+                        '<td>' + data[i].endTime + '</td>' +
+                        '<td>' + data[i].effective + '</td>' +
+                        '<td><button class="layui-btn layui-btn-danger" onclick="getValue(\'' + data[i].effective + '\',' + data[i].id +
+                        ')">退保</button><button class="layui-btn layui-btn-normal" onclick="getContinue(\'' + data[i].effective +
+                        '\',' +
+                        data[i].id + ')">续保</button></td>'
+                    '</tr>';
+                    $(".showInsurance").append(tr);
+                }
+            }, "json")
+    })
+
+    // 退保操作
+    function getValue(effective, id) {
+        if (effective == "过保") {
+            hint.msg("对不起，你的保险已经过保，无需退保！")
+            return
+        }
+        quit(effective, id)
+    }
+
+    function quit(effective, id) {
+        $.get(
+            "quitInsurance.do", {
+                "effective": effective,
+                "id": id,
+            },
+            function(data) {
+                if (data.success) {
+                    alert(data.message)
+                    location.reload()
+                } else {
+                    alert(data.message)
+                }
+            }
+        )
+    }
+
+    //续保操作
+    layui.use('layer', function() {
+        var layer = layui.layer;
+        hint = layer;
+    });
+
+    function getContinue(effective2, id2) {
+        if (effective2 == "在保") {
+            hint.msg('已经在保，无需续保')
+            return
+        }
+        xubao(effective2, id2);
+    }
+
+    function xubao(effective2, id2) {
+        hint.prompt({
+            formType: 2,
+            value: '',
+            title: '续保',
+            area: ['200px', '30px'] //自定义文本域宽高
+        }, function(value) {
+            $.get(
+                "continueInsurance.do", {
+                    "effective": effective2,
+                    "id": id2,
+                    "time": value
+                },
+                function(data) {
+                    if (data.success) {
+                        hint.msg(data.message)
+                        location.reload()
+                    } else {
+                        hint.msg(data.message)
+                        location.reload()
+                    }
+                }
+            )
+        })
+    }
+</script>
+
+<script src="layui.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".header").load("header.html");
+        $(".footer").load("footer.html");
+    })
+</script>
+
+</body>
+
+</html>

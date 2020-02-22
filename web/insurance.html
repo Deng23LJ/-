@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>办理保险</title>
+		<link rel="stylesheet" href="css/layui.css" media="all">
+
+	</head>
+
+	<body>
+		<!--引入导航栏-->
+		<div class="header"></div>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+			<legend>办理保险</legend>
+		</fieldset>
+
+		<form class="layui-form" action="">
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">保险类型</label>
+				<div class="layui-input-block">
+					<select name="city" class="type" lay-verify="required">
+						<option value=""></option>
+						<option value="养老保险">养老保险</option>
+						<option value="医疗保险">医疗保险</option>
+						<option value="失业保险">失业保险</option>
+						<option value="工伤保险">工伤保险</option>
+						<option value="生育保险">生育保险</option>
+						<option value="住房公积金">住房公积金</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">姓名</label>
+				<div class="layui-input-block">
+					<input type="text" name="username" id="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+					 class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">性别</label>
+				<div class="layui-input-block">
+					<input type="radio" name="sex" id="sex" value="男" title="男">
+					<input type="radio" name="sex" id="sex" value="女" title="女" checked>
+				</div>
+			</div>
+
+			<div class="layui-inline">
+				<label class="layui-form-label">年龄</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input age" id="test30" placeholder="yyyy-MM-dd">
+				</div>
+			</div>
+			<br />
+			<br />
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">保险期限</label>
+				<div class="layui-input-block">
+					<select name="time" id="time" lay-verify="required">
+						<option value=""></option>
+						<option value="1">1年</option>
+						<option value="5">5年</option>
+						<option value="10">10年</option>
+						<option value="15">15年</option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="layui-inline">
+				<label class="layui-form-label">起保日期</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input beginTime" id="test2" placeholder="yyyy-MM-dd">
+				</div>
+			</div>
+			<br />
+			<br />
+
+
+
+			<div class="layui-inline">
+				<label class="layui-form-label">失效日期</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input endTime" id="test1" placeholder="yyyy-MM-dd">
+				</div>
+			</div>
+			<br />
+			<br />
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">电话</label>
+				<div class="layui-input-block">
+					<input type="text" name="phone" id="phone" required lay-verify="required" placeholder="请输入联系电话" autocomplete="off"
+					 class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">籍贯</label>
+				<div class="layui-input-block">
+					<input type="text" name="nativePlace" id="nativePlace" required lay-verify="required" placeholder="" autocomplete="off"
+					 class="layui-input">
+				</div>
+			</div>
+
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">有效性</label>
+				<div class="layui-input-block">
+					<select name="effective" id="effective" lay-verify="required">
+						<option value="">请选择</option>
+						<option value="在保">在保</option>
+						<option value="过保">过保</option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">担保人</label>
+				<div class="layui-input-block">
+					<input type="text" name="guarantor" id="guarantor" required lay-verify="required" placeholder="" autocomplete="off"
+					 class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" id="insure" lay-submit lay-filter="formDemo">确认提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+
+		</form>
+
+
+		<div class="footer"></div>
+
+		<script type="text/javascript">
+			var hint = null;
+			//Demo
+			layui.use('form', function() {
+				var form = layui.form;
+			});
+
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+				//自定义颜色
+				laydate.render({
+					elem: '#test30',
+					theme: 'blue'
+				});
+
+				//
+				laydate.render({
+					elem: '#test1',
+
+					theme: 'blue'
+				});
+
+				laydate.render({
+					elem: '#test2',
+					theme: 'blue'
+				});
+			});
+
+
+			layui.use('layer', function() {
+				var layer = layui.layer;
+				hint = layer;
+			});
+
+			//jQuery
+			$("#insure").click(function() {
+				//获取到用户输入的数据
+				var type = $(".type").val()
+				var username = $("#username").val();
+				var sex = $("#sex").val();
+				var age = $(".age").val();
+				var time = $("#time").val();
+				var beginTime = $(".beginTime").val();
+				var endTime = $(".endTime").val();
+				var phone = $("#phone").val()
+				var nativePlace = $("#nativePlace").val();
+				var effective = $("#effective").val();
+				var guarantor = $("#guarantor").val();
+				//通过post提交方式进行提交
+				$.post(
+					"insure.do", {
+						"type": type,
+						"username": username,
+						"sex": sex,
+						"age": age,
+						"time": time,
+						"beginTime": beginTime,
+						"endTime": endTime,
+						"phone": phone,
+						"nativePlace": nativePlace,
+						"effective": effective,
+						"guarantor": guarantor
+					},
+					function(data) {
+						if (data.success) {
+							alert("banlichenggong")
+							hint.msg(data.message);
+							window.location.href = "insuranceAndwelfare.html"
+						} else {
+							hint.msg(data.message);
+						}
+					}, "json");
+			})
+		</script>
+
+		<script src="js/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="js/user.js"></script>
+		<script src="layui.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header.html");
+				$(".footer").load("footer.html");
+			})
+		</script>
+
+
+	</body>
+
+</html>

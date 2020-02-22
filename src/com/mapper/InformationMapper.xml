@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="uTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.InformationMapper">
+    <select id="hotNews" parameterType="map" resultType="News">
+        select * from NewsList where type = #{type} limit #{page},#{limit};
+    </select>
+    <select id="businessNews" parameterType="String" resultType="News">
+        select * from NewsList where type = #{type}
+    </select>
+    <select id="socialNews" parameterType="String" resultType="News">
+        select * from NewsList where type = #{type}
+    </select>
+    <select id="newsCount" resultType="java.lang.Integer">
+        select count(*) from NewsList where type = #{type};
+    </select>
+</mapper>
+

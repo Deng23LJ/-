@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="uTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.ZhengminhudongMapper">
+    <insert id="suggestion" parameterType="map" >
+        insert into suggestion values (null,#{username},#{content})
+    </insert>
+    <insert id="complaint" parameterType="map">
+        insert into complaint values (null,#{username},#{content})
+    </insert>
+</mapper>
+

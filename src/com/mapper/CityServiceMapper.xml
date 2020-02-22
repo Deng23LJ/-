@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CityServiceMapper">
+    <!--    展示自行车-->
+    <select id="show" resultType="Bike">
+    select * from bicycle
+    </select>
+    <!--    骑车业务-->
+    <update id="ride" parameterType="map">
+        update bicycle set exist="已借" where id = #{id}
+    </update>
+    <!--    还车业务-->
+    <update id="returnBike" parameterType="map">
+        update bicycle set exist="空闲" where id = #{id}
+    </update>
+    <!--    保险展示服务-->
+    <select id="showInsurance" resultType="com.entity.Insurances">
+        select * from insurance
+    </select>
+<!--    退保服务-->
+    <update id="quitInsurance" parameterType="map" >
+        update insurance set effective="过保" where id =#{id}
+    </update>
+<!--    续保服务-->
+    <update id="continueInsurance" parameterType="map">
+        update insurance set effective="在保",time = #{time} where id = #{id}
+    </update>
+    <!--    办理保险服务-->
+    <select id="insure" parameterType="com.entity.Insurances">
+        insert into insurance values (null,#{type},#{username},#{sex},#{age},#{time},#{beginTime},#{endTime},#{phone},#{nativePlace},#{effective},#{guarantor});
+    </select>
+    <!--    汽车违章-->
+    <select id="violation" resultType="CarViolation">
+        select * from violation
+    </select>
+</mapper>
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>车辆违章</title>
+		<link rel="stylesheet" href="css/layui.css" media="all">
+		<link rel="stylesheet" href="css/box/base.css">
+
+
+	</head>
+
+	<body>
+		<!--引入导航栏-->
+		<div class="header"></div>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+			<legend>车辆违章记录</legend>
+		</fieldset>
+
+		<div class="box">
+			<table class="layui-table violation" lay-skin="line">
+				<colgroup>
+					<col width="150">
+					<col width="200">
+					<col>
+				</colgroup>
+				<thead>
+				<tr>
+					<th>车牌号</th>
+					<th>汽车类型</th>
+					<th>违章类型</th>
+					<th>违章时间</th>
+					<th>违章地点</th>
+					<th>驾驶人</th>
+					<th>处罚决定</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+
+		</div>
+
+
+		<div class="footer"></div>
+
+		<script src="js/jquery-2.1.0.min.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				$.post(
+					"vehicleViolation.do",
+					function(data) {
+						for (var i = 0; i < data.length; i++) {
+							var tr = '<tr>' +
+								'<td>' + data[i].carID + '</td>' +
+								'<td>' + data[i].carType + '</td>' +
+								'<td>' + data[i].violationType + '</td>' +
+								'<td>' + data[i].violationTime + '</td>' +
+								'<td>' + data[i].violationPlace + '</td>' +
+								'<td>' + data[i].driver + '</td>' +
+								'<td>' + data[i].punishment + '</td>' +
+								'</tr>';
+							$(".violation").append(tr);
+						}
+					}, "json")
+			})
+		</script>
+
+
+		<script src="layui.js"></script>
+
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header.html");
+				$(".footer").load("footer.html");
+			})
+		</script>
+
+	</body>
+
+</html>

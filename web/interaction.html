@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>政民互动</title>
+		<link rel="stylesheet" href="css/layui.css" media="all">
+		<link rel="stylesheet" href="css/web/base.css">
+		<style type="text/css">
+			.content_a {
+				width: 332px;
+				height: 300px;
+				background: rgba(255, 255, 255, 1);
+				box-shadow: 0px 2px 8px 0px rgba(144, 147, 153, 0.32);
+				display: block;
+			}
+
+			.content_a .div_img {
+				text-align: center;
+				padding-top: 58px;
+			}
+
+			.content_a .div_title {
+				text-align: center;
+				padding-top: 31px;
+				font-size: 18px;
+				color: rgba(48, 49, 51, 1);
+			}
+
+			.content_a .div_text {
+				padding-top: 10px;
+				text-align: center;
+				font-size: 14px;
+				color: rgba(176, 176, 176, 1);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--引入导航栏-->
+		<div class="header"></div>
+
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+			<legend>政民互动</legend>
+		</fieldset>
+		<div class="w" style="position: relative; min-height: 450px;">
+
+			<div class="common_content_tab zong_tagContent">
+				<div style="display: flex;padding-top: 40px;">
+					<a class="content_a" href="counsel.html" title="我要咨询">
+						<div class="div_img"><img src="images/affair/wyzx.png" style="width: 100px;"></div>
+						<div class="div_title">我要咨询</div>
+						<div class="div_text">按时回复、耐心解答</div>
+					</a>
+					<a class="content_a" style="margin-left: 22px;margin-right: 22px;" href="suggestion.html" title="我要建议">
+						<div class="div_img"><img src="images/affair/wyjy.png" style="width: 100px;"></div>
+						<div class="div_title">我要建议</div>
+						<div class="div_text">用心倾听、虚心改正</div>
+					</a>
+					<a class="content_a" href="complaint.html" title="我要投诉">
+						<div class="div_img"><img src="images/affair/wyts.png" style="width: 100px;"></div>
+						<div class="div_title">我要投诉</div>
+						<div class="div_text">快速响应、立行立改</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer"></div>
+
+
+		<script src="layui.js"></script>
+		<script src="js/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header.html");
+				$(".footer").load("footer.html");
+			})
+		</script>
+
+	</body>
+
+</html>
