@@ -1,6 +1,5 @@
 $(function () {
 
-
     //注册用户名检查
     $("#username").blur(function () {
         var username = $(this).val();

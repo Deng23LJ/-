@@ -40,7 +40,7 @@
 
 	</mvc:annotation-driven>
 
-	<mvc:resources mapping="/view/**" location="/view/"/>
+<!--	<mvc:resources mapping="/view/**" location="/view/"/>-->
 	<mvc:resources mapping="/js/**" location="/js/"/>
 
 	<!-- ViewResolver视图解析器，解析jsp视图 -->

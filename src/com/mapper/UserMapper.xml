@@ -9,7 +9,6 @@
     <insert id="regist" parameterType="com.entity.User">
         insert into user values (null,#{username},#{password},#{sex},#{age},#{phone},#{address},#{email},null)
     </insert>
-
 <!--    注册检查-->
     <select id="usernameCheck" parameterType="java.lang.String" resultType="User">
         select * from user where username=#{username}
