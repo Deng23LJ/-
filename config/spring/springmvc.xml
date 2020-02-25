@@ -37,8 +37,8 @@
 				</property>
 			</bean>
 		</mvc:message-converters>
-
 	</mvc:annotation-driven>
+
 
 <!--	<mvc:resources mapping="/view/**" location="/view/"/>-->
 	<mvc:resources mapping="/js/**" location="/js/"/>

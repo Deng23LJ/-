@@ -1,17 +1,11 @@
 package com.controller;
 
 
-import com.entity.Bike;
-import com.entity.CarViolation;
-import com.entity.Insurances;
-import com.entity.JsonResult;
+import com.entity.*;
 import com.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -99,5 +93,24 @@ public class CityServiceController {
     }
 
 
+    //公交展示
+    @PostMapping("allBusShow.do")
+    public List<Bus> findAllBus() throws Exception{
+        List<Bus> allBus = cityService.findAllBus();
+        return allBus;
+    }
 
+
+
+    //公交车查询的业务
+    @PostMapping("busSearch.do")
+    public Bus searchBus(int busId) throws Exception {
+        try{
+            Bus bus = cityService.searchBus(busId);
+            return bus;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -27,19 +27,19 @@
 			<div class="layui-tab-content">
 				<div class="layui-tab-item layui-show">
 					<div class="box">
-						<table class="layui-table hotNews" lay-skin="nob" id="test">
+						<table class="layui-table hotNews" lay-skin="nob" id="test1">
 						</table>
 					</div>
 				</div>
 				<div class="layui-tab-item">
 					<div class="box">
-					<table class="layui-table businessNews" lay-skin="nob" >
+					<table class="layui-table businessNews" lay-skin="nob" id="test2" >
 					</table>
 					</div>
 				</div>
 				<div class="layui-tab-item">
 					<div class="box">
-					<table class="layui-table socialNews" lay-skin="nob">
+					<table class="layui-table socialNews" lay-skin="nob" id="test3">
 					</table>
 					</div>
 				</div>
@@ -51,27 +51,58 @@
 
 
 <script src="js/jquery-2.1.0.min.js"></script>
-		<script src="layui.js"></script>
+		<script src="layui.all.js"></script>
 
 		<script type="text/javascript">
 			var hotNews1 = document.getElementById('hotNews').innerText;
 				layui.use('table', function(){
 					var table = layui.table;
 					table.render({
-						elem: '#test',
-						page: 2,
-						limit:5,
-
-					    url:'hotNews.do?type='+hotNews1,
-						limits:[5,10],
-						cols: [[
+						elem: '#test1'
+						,limit:5
+					    ,url:'hotNews.do?type='+hotNews1
+						,page: true
+						,cols: [[
 							{field:'time', width:150, title: '日期'}
-							,{field:'title', width:200, title: '题目'}
+							,{field:'title', width:200, title: '标题'}
 							,{field:'content', title: '内容'}
 						]]
-						,page: true
 					});
 				});
+
+			//创业资讯
+			var businessNews = document.getElementById('businessNews').innerText;
+			layui.use('table', function(){
+				var table = layui.table;
+				table.render({
+					elem: '#test2',
+					limit:5,
+					url:'businessNews.do?type='+businessNews,
+					cols: [[
+						{field:'time', width:150, title: '日期'}
+						,{field:'title', width:200, title: '标题'}
+						,{field:'content', title: '内容'}
+					]],
+					page: true
+				});
+			});
+
+			//社会百态
+			var socialNews = document.getElementById('socialNews').innerText;
+			layui.use('table', function(){
+				var table = layui.table;
+				table.render({
+					elem: '#test3',
+					url:'socialNews.do?type='+socialNews,
+					limit:5,
+					cols: [[
+						{field:'time', width:150, title: '日期'}
+						,{field:'title', width:200, title: '标题'}
+						,{field:'content', title: '内容'}
+					]]
+					,page: true
+				});
+			});
 
 		</script>
 

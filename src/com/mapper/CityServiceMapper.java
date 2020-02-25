@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.Bike;
+import com.entity.Bus;
 import com.entity.CarViolation;
 import com.entity.Insurances;
 
@@ -24,4 +25,8 @@ public interface CityServiceMapper {
     void quitInsurance(Map<String, Object> map) throws Exception;
 
     void continueInsurance(Map<String, Object> map) throws Exception;
+
+    Bus searchBus(int busId) throws Exception;
+
+    List<Bus> findAllBus() throws Exception;
 }

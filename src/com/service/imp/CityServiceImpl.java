@@ -1,6 +1,7 @@
 package com.service.imp;
 
 import com.entity.Bike;
+import com.entity.Bus;
 import com.entity.CarViolation;
 import com.entity.Insurances;
 import com.mapper.CityServiceMapper;
@@ -71,6 +72,16 @@ public class CityServiceImpl implements CityService {
         map.put("effective",effective);
         map.put("time",time);
         cityServiceMapper.continueInsurance(map);
+    }
+
+    @Override
+    public Bus searchBus(int busId) throws Exception {
+        return cityServiceMapper.searchBus(busId);
+    }
+
+    @Override
+    public List<Bus> findAllBus() throws Exception {
+        return cityServiceMapper.findAllBus();
     }
 
 

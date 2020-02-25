@@ -4,11 +4,11 @@
     <select id="hotNews" parameterType="map" resultType="News">
         select * from NewsList where type = #{type} limit #{page},#{limit};
     </select>
-    <select id="businessNews" parameterType="String" resultType="News">
-        select * from NewsList where type = #{type}
+    <select id="businessNews" parameterType="map" resultType="News">
+        select * from NewsList where type = #{type} limit #{page},#{limit};
     </select>
-    <select id="socialNews" parameterType="String" resultType="News">
-        select * from NewsList where type = #{type}
+    <select id="socialNews" parameterType="map" resultType="News">
+        select * from NewsList where type = #{type} limit #{page},#{limit};
     </select>
     <select id="newsCount" resultType="java.lang.Integer">
         select count(*) from NewsList where type = #{type};

@@ -33,5 +33,13 @@
     <select id="violation" resultType="CarViolation">
         select * from violation
     </select>
+<!--    查找所有公交-->
+    <select id="findAllBus" resultType="Bus">
+        select * from bus;
+    </select>
+<!--    城市公交查询-->
+    <select id="searchBus" resultType="Bus" parameterType="java.lang.Integer">
+        select * from bus where busId = #{busId}
+    </select>
 </mapper>
 

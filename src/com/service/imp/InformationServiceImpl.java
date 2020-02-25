@@ -20,19 +20,27 @@ public class InformationServiceImpl implements InformationService {
     public List<News> hotNews(String type,int page,int limit) throws Exception {
         Map<String ,Object> map = new HashMap<>();
         map.put("type",type);
-        map.put("page",page);
+        map.put("page",(page-1)*limit);
         map.put("limit",limit);
         return (informationMapper.hotNews(map));
 }
 
     @Override
-    public List<News> businessNews(String type) throws Exception {
-        return (informationMapper.businessNews(type));
+    public List<News> businessNews(String type,int page,int limit) throws Exception {
+        Map<String ,Object> map = new HashMap<>();
+        map.put("type",type);
+        map.put("page",(page-1)*limit);
+        map.put("limit",limit);
+        return (informationMapper.businessNews(map));
     }
 
     @Override
-    public List<News> socialNews(String type) throws Exception {
-        return (informationMapper.socialNews(type));
+    public List<News> socialNews(String type,int page,int limit) throws Exception {
+        Map<String ,Object> map = new HashMap<>();
+        map.put("type",type);
+        map.put("page",(page-1)*limit);
+        map.put("limit",limit);
+        return (informationMapper.socialNews(map));
     }
 
     @Override
