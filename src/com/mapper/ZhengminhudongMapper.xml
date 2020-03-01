@@ -7,5 +7,11 @@
     <insert id="complaint" parameterType="map">
         insert into complaint values (null,#{username},#{content})
     </insert>
+    <select id="question" resultType="Chat">
+        select * from chat
+    </select>
+    <insert id="chat" parameterType="map">
+        insert into chat values (#{time},#{send},#{receive},#{chatContent})
+    </insert>
 </mapper>
 

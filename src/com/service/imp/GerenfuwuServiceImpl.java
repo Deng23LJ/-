@@ -1,9 +1,6 @@
 package com.service.imp;
 
-import com.entity.Budongzichan;
-import com.entity.Marriage;
-import com.entity.Traffic;
-import com.entity.Visa;
+import com.entity.*;
 import com.mapper.GerenfuwuMapper;
 import com.service.GerenfuwuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +31,16 @@ public class GerenfuwuServiceImpl implements GerenfuwuService {
     @Override
     public List<Traffic> traffic() throws Exception {
         return (gerenfuwuMapper.traffic());
+    }
+
+    @Override
+    public int applyVisa(PersonAffairs personAffairs) throws Exception {
+        try{
+            gerenfuwuMapper.applyVisa(personAffairs);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

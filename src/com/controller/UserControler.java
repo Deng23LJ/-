@@ -28,7 +28,6 @@ public class UserControler {
     //登录操作
     @RequestMapping("/login.do")
     public int login(HttpSession session, String username, String password) throws Exception {
-
         User login = userService.login(username,password);
         if (login == null) {
             return 0;
@@ -40,14 +39,13 @@ public class UserControler {
 
     //注册操作
     @RequestMapping("/regist.do")
-    public JsonResult regist(User user) {
-        try {
-            userService.regist(user);
-            return new JsonResult(true, "注册成功");
-        } catch (Exception e) {
-            e.printStackTrace();
+    public int regist(User user) throws Exception {
+        int result = userService.regist(user);
+        if (result == 1){
+            return 1;
+        }else{
+            return 0;
         }
-        return new JsonResult(false, "添加失败");
     }
 
     //注册的ajax用户名查询
@@ -70,5 +68,22 @@ public class UserControler {
         }else{
             return username;
         }
+    }
+
+
+    //安全管理
+    @RequestMapping("updateResume.do")
+    public User updateResume(HttpSession session) throws Exception {
+        String username = (String) session.getAttribute("name");
+        User userResume = userService.updateResume(username);
+        return userResume;
+
+    }
+
+    @RequestMapping("update.do")
+    public int update(User user) throws Exception {
+        int updateResult = userService.update(user);
+        return updateResult;
+
     }
 }

@@ -13,4 +13,8 @@
     <select id="traffic" resultType="Traffic">
         select * from traffic;
     </select>
+
+    <insert id="applyVisa" parameterType="PersonAffairs">
+        insert into personAffairs values (null,'护照办理',#{username},#{transactionDate},#{IDcard},0,0,#{remark})
+    </insert>
 </mapper>

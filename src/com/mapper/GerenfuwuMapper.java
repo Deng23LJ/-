@@ -1,11 +1,9 @@
 package com.mapper;
 
-import com.entity.Budongzichan;
-import com.entity.Marriage;
-import com.entity.Traffic;
-import com.entity.Visa;
+import com.entity.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface GerenfuwuMapper {
 
@@ -16,4 +14,6 @@ public interface GerenfuwuMapper {
     List<Marriage> marriage() throws Exception;
 
     List<Traffic> traffic() throws Exception;
+
+    void applyVisa(PersonAffairs personAffairs) throws Exception;
 }

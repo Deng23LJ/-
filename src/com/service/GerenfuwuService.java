@@ -1,9 +1,6 @@
 package com.service;
 
-import com.entity.Budongzichan;
-import com.entity.Marriage;
-import com.entity.Traffic;
-import com.entity.Visa;
+import com.entity.*;
 
 import java.util.List;
 
@@ -17,4 +14,6 @@ public interface GerenfuwuService {
     List<Marriage> marriage() throws Exception;
 
     List<Traffic> traffic() throws Exception;
+
+    int applyVisa(PersonAffairs personAffairs) throws Exception;
 }

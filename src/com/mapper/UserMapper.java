@@ -11,4 +11,8 @@ public interface UserMapper {
     void regist(User user) throws Exception;
 
     User usernameCheck(String username) throws Exception;
+
+    User updateResume(String username) throws Exception;
+
+    void update(User user) throws Exception;
 }

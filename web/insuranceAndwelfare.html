@@ -6,6 +6,27 @@
     <title>五险一金</title>
     <link rel="stylesheet" href="css/layui.css" media="all">
     <link rel="stylesheet" href="css/box/base.css">
+    <style>
+        .searech{
+            width: 600px;
+            height: 50px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 30px;
+        }
+        .label{
+            font-size: 18px;
+            font-family: "curlz mt";
+            font-weight: 500;
+
+        }
+        .input-content{
+            width: 150px;
+            height: 26px;
+            border: 2px solid black;
+            margin-left: 10px;
+        }
+    </style>
 
 
 </head>
@@ -18,10 +39,10 @@
     <legend>五险一金</legend>
 </fieldset>
 
-<div style="text-align: center;">
-    <label class="">保险咨询</label>
-    <input type="text" id="insureSearch" >
-    <button class="layui-btn layui-btn-warm">搜索</button>
+<div class="searech">
+    <label class="label">保险咨询</label>
+    <input type="text" id="searchContent" class="input-content">
+    <button class="layui-btn layui-btn-normal" id="insuranceSearch">搜索</button>
 </div>
 
 
@@ -57,6 +78,17 @@
 <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
 
 <script type="text/javascript">
+
+    $("#insuranceSearch").click(function () {
+        var searchContent = $("#searchContent").val();
+        $.post(
+            "insuranceSearch.do",
+            {"type":searchContent},
+            function (data){
+                alert(data)
+            }
+        )
+    })
 
     $(function () {
         $.post(

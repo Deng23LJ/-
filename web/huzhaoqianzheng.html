@@ -52,7 +52,7 @@
 								'<td>' + data[i].daxiang + '</td>' +
 								'<td>' + data[i].banlishixiang + '</td>' +
 								'<td>' + data[i].department + '</td>' +
-								'<td><span style="color: #1E9FFF" onclick="getMessage(' + data[i].id +
+								'<td><span style="color: #1E9FFF" onclick="internetConsult(' + data[i].id +
 								')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="getMessage(' + data[i].id +
 								')">网上办理</span></td>' +
 								'</tr>';
@@ -65,6 +65,12 @@
 
 			function getMessage(id) {
 				window.location.href = "banqianzheng.html"
+			}
+
+			//网上咨询
+			function internetConsult(id) {
+				window.location.href="counsel.html"
+
 			}
 		</script>
 

@@ -23,13 +23,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void regist(User user) throws Exception {
-        userMapper.regist(user);
+    public int regist(User user) throws Exception {
+        try{
+            userMapper.regist(user);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+           return  0;
     }
 
 
     @Override
     public User usernameCheck(String username) throws Exception{
       return (userMapper.usernameCheck(username));
+    }
+
+    @Override
+    public User updateResume(String username) throws Exception {
+        return userMapper.updateResume(username);
+    }
+
+    @Override
+    public int update(User user) throws Exception {
+        try {
+            userMapper.update(user);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

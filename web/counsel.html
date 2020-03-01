@@ -2,9 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>民众咨询</title>
-    <link rel="stylesheet" href="css/box/base.css">
+    <title>咨询服务</title>
+    <link rel="stylesheet" href="css/layui.css">
+    <style>
+        .box {
+            width: 700px;
+            margin: 0 auto;
+        }
 
+        .receiver {
+            width: 600px;
+            height: 65px;
+            text-align: center;
+        }
+        .face{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: url("images/user/sonu.jpg") no-repeat center center;
+            margin: 0 auto;
+
+        }
+
+
+        .message {
+            width: 600px;
+            height: 400px;
+            border: 2px solid cornflowerblue;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+        }
+
+        .input-content {
+            width: 600px;
+            height: 200px;
+            border-bottom: 2px solid cornflowerblue;
+            border-right: 2px solid cornflowerblue;
+            border-left:  2px solid cornflowerblue;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .input-area {
+
+            width: 560px;
+            height: 150px;
+            border: 0px;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+        .send-button {
+            margin-left: 530px;
+        }
+        .Admininformation{
+            float: left;
+            width: 600px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .Userinformation{
+            float: right;
+            width: 600px;
+            height: 40px;
+            line-height: 40px;
+            text-align: right;
+        }
+        .sPicture{
+            width: 40px;
+            height: 40px;
+            border-radius: 15px;
+            float: left;
+            background: url("images/user/pawandeep.jpg") no-repeat center center;
+            margin-right: 10px;
+            margin-left: 8px;
+        }
+        .rPicture{
+            width: 40px;
+            height: 40px;
+            border-radius: 15px;
+            float: right;
+            background: url("images/user/genu.jpg") no-repeat center center;
+            margin-left: 10px;
+            margin-right: 8px;
+
+        }
+    </style>
 
 </head>
 <body>
@@ -16,17 +99,67 @@
     <legend>民众咨询</legend>
 </fieldset>
 
-
 <div class="box">
+    <div class="receiver" id="consultant"><div class="face"></div></div>
+    <div class="message">
 
+        <div class="content" style="overflow-y: auto;overflow-x: hidden; max-height: 400px" id="content"></div>
+    </div>
+    <div class="input-content">
+        <textarea class="input-area"></textarea>
+        <button type="submit" id="chat" class="layui-btn layui-btn-normal send-button">发送</button>
+    </div>
 </div>
+
 
 <div class="footer"></div>
 
 
 <script src="js/jquery-2.1.0.min.js"></script>
-
 <script type="text/javascript">
+    //历史消息展示
+        $.post(
+            "findAllMessage.do",
+            function (data) {
+                for (var i = 0;i<data.length;i++){
+                    $("#content").append('<div style="text-align: center;font-size: 10px">'+data[i].time+'</div>');
+                    if (data[i].send == "admin"){
+
+                        $("#content").append('<div class="Admininformation"><span class="sPicture"></span>'+data[i].chatContent+'</div>')
+                    } else{
+
+                        $("#content").append('<div class="Userinformation">'+data[i].chatContent+'<span class="rPicture"></span></div>');
+                    }
+                }
+                $("#content").scrollTop(9999);
+            }
+        )
+
+
+    //发送消息
+    $("#chat").click(function () {
+        var chatMessage = $(".input-area").val()
+        var receiver = "admin";
+        if (chatMessage == ""){
+            return
+        }else{
+            $.post(
+                "chat.do",
+                {"receive":receiver,"chatContent":chatMessage},
+                function (data) {
+                    if (data == 1){
+                        alert("请登录！")
+                        return
+                    }else{
+                        $("#content").append('<div class="Userinformation">'+chatMessage+'<span class="rPicture"></span></div>');
+                        $(".input-area").val('')
+                        $("#content").scrollTop(9999);
+                    }
+                }
+
+            )
+        }
+    })
 
     // 引入框架
     $(".header").load("header.html");

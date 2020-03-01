@@ -19,7 +19,7 @@
 
 		<div  style="padding-left: 150px; padding-right: 150px;">
 
-		<form class="layui-form" action="">
+
 			<div class="layui-form-item">
 				<label class="layui-form-label">用户名</label>
 				<div class="layui-input-inline">
@@ -40,11 +40,12 @@
 				<div class="layui-form-mid layui-word-aux password-check">密码由数字、字母、符号构成</div>
 			</div>
 
+
 			<div class="layui-form-item">
 				<label class="layui-form-label">性别</label>
 				<div class="layui-input-block">
-					<input type="radio" name="sex" id="sex" value="男" title="男">
-					<input type="radio" name="sex" id="sex" value="女" title="女" checked>
+					<input type="text" name="=sex" id="sex" required lay-verify="required" placeholder="请输入性别" autocomplete="off"
+						   class="layui-input">
 				</div>
 			</div>
 
@@ -69,34 +70,27 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">地址</label>
 				<div class="layui-input-block">
-					<select name="address" id="address" lay-verify="required">
-						<option value=""></option>
-						<option value="北京">北京</option>
-						<option value="上海">上海</option>
-						<option value="广州">广州</option>
-						<option value="深圳">深圳</option>
-						<option value="杭州">杭州</option>
-						<option value="武汉">武汉</option>
-					</select>
+					<input type="text" name="address" id="address" required lay-verify="required" placeholder="请输入地址" autocomplete="off"
+						   class="layui-input">
 				</div>
 			</div>
 
 			<div class="layui-form-item">
 				<label class="layui-form-label">email</label>
 				<div class="layui-input-block">
-					<input type="text" name="email" id="email" required lay-verify="required" placeholder="请输入email" autocomplete="off"
+					<input type="email" name="email" id="email" required lay-verify="required" placeholder="请输入email" autocomplete="off"
 					 class="layui-input">
 				</div>
 			</div>
 
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" id="UserRegist" lay-submit lay-filter="formDemo">注册</button>
+					<button class="layui-btn layui-btn-normal" id="register" lay-submit lay-filter="formDemo">注册</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
 
-		</form>
+
 		</div>
 
 		<div class="footer"></div>
@@ -111,42 +105,39 @@
 					theme: 'blue'
 				});
 			});
-
 			//注册
-			$("#UserRegist").click(function () {
+			$("#register").click(function () {
 				//获取到用户输入的数据
 				var username = $("#username").val();
 				var password = $("#password").val();
 				var sex = $("#sex").val();
-				var age = $("#age").val();
+				var age = $(".age").val();
 				var phone = $("#phone").val()
 				var address = $("#address").val();
 				var email = $("#email").val();
-				//通过post提交方式进行提交
-				$.post(
-						"regist.do",
-						{
-							"username": username,
-							"password": password,
-							"sex": sex,
-							"age": age,
-							"phone": phone,
-							"address": address,
-							"email": email
-						},
-						function (data) {
-							alert(data)
-							if (data.success) {
-								alert(data.message)
-								window.location.href = "login.html";
-							} else {
-								alert(data.message)
-								window.location.href = "regist.html"
-							}
-						}, "json");
-
+				if(username == "" || password =="" || sex =="" || age == "" || phone =="" || address == "" || email == ""){
+					alert("请填写完整！")
+					return
+				}else{
+					//通过post提交方式进行提交
+					$.post("regist.do",
+							{"username": username,
+						     "password": password,
+						     "sex": sex,
+						     "age": age,
+						     "phone": phone,
+						     "address": address,
+								"email": email},
+							function (data) {
+						if (data == 1){
+							window.location.href="login.html"
+						} else{
+							alert("注册失败，请重试")
+							location.reload();
+						}
+					}, "json");
+				}
 			})
-
 			//页头页尾引入
 			$(".header").load("header.html");
 			$(".footer").load("footer.html");
