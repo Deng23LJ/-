@@ -1,7 +1,13 @@
 package com.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+
+@Setter
+@Getter
 public class CarViolation {
     private String carID;
     private String owner;
@@ -12,67 +18,5 @@ public class CarViolation {
     private String driver;
     private String punishment;
 
-    public String getOwner() {
-        return owner;
-    }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getCarID() {
-        return carID;
-    }
-
-    public void setCarID(String carID) {
-        this.carID = carID;
-    }
-
-    public String getCarType() {
-        return carType;
-    }
-
-    public void setCarType(String carType) {
-        this.carType = carType;
-    }
-
-    public String getViolationType() {
-        return violationType;
-    }
-
-    public void setViolationType(String violationType) {
-        this.violationType = violationType;
-    }
-
-    public Date getViolationTime() {
-        return violationTime;
-    }
-
-    public void setViolationTime(Date violationTime) {
-        this.violationTime = violationTime;
-    }
-
-    public String getViolationPlace() {
-        return violationPlace;
-    }
-
-    public void setViolationPlace(String violationPlace) {
-        this.violationPlace = violationPlace;
-    }
-
-    public String getDriver() {
-        return driver;
-    }
-
-    public void setDriver(String driver) {
-        this.driver = driver;
-    }
-
-    public String getPunishment() {
-        return punishment;
-    }
-
-    public void setPunishment(String punishment) {
-        this.punishment = punishment;
-    }
 }

@@ -44,9 +44,14 @@
 <script src="layui.js"></script>
 <script src="js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
+    var affairType = '住房'
 
     $.post(
-        "budongzichan.do",
+        "affairs.do",
+        {
+            "type":affairType
+
+        },
         function (data) {
             for (var i = 0; i < data.length; i++) {
                 var tr = '<tr>' +
@@ -54,18 +59,19 @@
                     '<td>' + data[i].banlishixiang + '</td>' +
                     '<td>' + data[i].department + '</td>' +
                     '<td><span style="color: #1E9FFF" onclick="internetConsult(' + data[i].id +
-                    ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="getMessage(' + data[i].id +
+                    ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="dealAffairs(' + data[i].id +
                     ')">网上办理</span></td>' +
                     '</tr>';
                 $(".budongzichan").append(tr);
             }
-        },
-        "json"
-    )
+        }, "json")
 
     //网上咨询
     function internetConsult(id) {
         window.location.href="counsel.html"
+    }
+    function dealAffairs(){
+        window.location.href="affairsDeal.html"
     }
 
 

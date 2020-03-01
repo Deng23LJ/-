@@ -27,30 +27,6 @@ public class GerenfuwuController {
     @Autowired
     private GerenfuwuService gerenfuwuService;
 
-    @RequestMapping("huzhaoqianzheng.do")
-    public List<Visa> huzhaoqianzheng() throws Exception {
-        List<Visa> huzhaoqianzheng = gerenfuwuService.huzhaoqianzheng();
-        return huzhaoqianzheng;
-    }
-
-    @RequestMapping("budongzichan.do")
-    public List<Budongzichan> budongzichan() throws Exception {
-        List<Budongzichan> budongzichan = gerenfuwuService.budongzichan();
-        return budongzichan;
-    }
-
-    @RequestMapping("marriage.do")
-    public List<Marriage> marriage() throws Exception {
-        List<Marriage> marriage = gerenfuwuService.marriage();
-        return marriage;
-    }
-
-    @RequestMapping("traffic.do")
-    public List<Traffic> traffic() throws Exception {
-        List<Traffic> traffic = gerenfuwuService.traffic();
-        return traffic;
-    }
-
 
     //    用户名展示
     @RequestMapping("visaName.do")
@@ -62,20 +38,29 @@ public class GerenfuwuController {
     }
 
     //护照办理
-    @RequestMapping("applyVisa.do")
-    public int applyVisa(HttpSession session, PersonAffairs personAffairs) throws Exception {
+    @RequestMapping("dealAffairs.do")
+    public int dealAffairs(HttpSession session, PersonAffairs personAffairs) throws Exception {
         String userName = (String) session.getAttribute("name");
         personAffairs.setUsername(userName);
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
         String DealDate = date.format(new Date());
         personAffairs.setTransactionDate(DealDate);
-        int visa = gerenfuwuService.applyVisa(personAffairs);
+        int visa = gerenfuwuService.dealAffairs(personAffairs);
         if (visa == 1) {
             return 1;
         } else {
             return 0;
         }
     }
+
+    //事务办理
+    @RequestMapping("affairs.do")
+    public List<Affairs> affairsShow(String type) throws Exception {
+        List<Affairs> affairsList = gerenfuwuService.affairsShow(type);
+        return affairsList;
+    }
+
+
 
 
 }

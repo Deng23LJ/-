@@ -4,14 +4,13 @@ package com.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-public class Visa {
+@Getter
+public class Affairs {
 
     private int id;
+    private String type;
     private String daxiang;
     private String banlishixiang;
     private String department;
-
-
 }

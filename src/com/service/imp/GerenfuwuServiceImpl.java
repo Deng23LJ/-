@@ -13,34 +13,21 @@ public class GerenfuwuServiceImpl implements GerenfuwuService {
 
     @Autowired
     private GerenfuwuMapper gerenfuwuMapper;
-    @Override
-    public List<Visa> huzhaoqianzheng() throws Exception {
-        return (gerenfuwuMapper.huzhaoqianzheng());
-    }
+
 
     @Override
-    public List<Budongzichan> budongzichan() throws Exception {
-        return (gerenfuwuMapper.budongzichan());
-    }
-
-    @Override
-    public List<Marriage> marriage() throws Exception {
-        return (gerenfuwuMapper.marriage());
-    }
-
-    @Override
-    public List<Traffic> traffic() throws Exception {
-        return (gerenfuwuMapper.traffic());
-    }
-
-    @Override
-    public int applyVisa(PersonAffairs personAffairs) throws Exception {
+    public int dealAffairs(PersonAffairs personAffairs) throws Exception {
         try{
-            gerenfuwuMapper.applyVisa(personAffairs);
+            gerenfuwuMapper.dealAffairs(personAffairs);
             return 1;
         }catch (Exception e){
             e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public List<Affairs> affairsShow(String type) throws Exception {
+        return gerenfuwuMapper.affairsShow(type);
     }
 }

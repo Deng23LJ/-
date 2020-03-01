@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>户籍户口</title>
-		<link rel="stylesheet" href="css/layui.css" media="all">
+<head>
+    <meta charset="UTF-8">
+    <title>户籍户口</title>
+    <link rel="stylesheet" href="css/layui.css" media="all">
 
-		<link rel="stylesheet" href="css/box/base.css">
+    <link rel="stylesheet" href="css/box/base.css">
 
-	</head>
+</head>
 
-	<body>
-		<!--引入导航栏-->
-		<div class="header"></div>
+<body>
+<!--引入导航栏-->
+<div class="header"></div>
 
-		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
-			<legend>出生登记</legend>
-		</fieldset>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+    <legend>出生登记</legend>
+</fieldset>
 
-		<div class="box">
-			<table class="layui-table hujihukou" lay-skin="line">
-				<colgroup>
-					<col width="300">
-					<col width="300">
-					<col>
-				</colgroup>
-				<thead>
-				<tr>
-					<th>大项</th>
-					<th>办理项</th>
-					<th>部门</th>
-					<th>操作</th>
-				</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
+<div class="box">
+    <table class="layui-table hujihukou" lay-skin="line">
+        <colgroup>
+            <col width="300">
+            <col width="300">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>大项</th>
+            <th>办理项</th>
+            <th>部门</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
 
-		</div>
+</div>
 
-		<div class="footer"></div>
-		<script src="js/jquery-2.1.0.min.js"></script>
-		<script type="text/javascript">
+<div class="footer"></div>
+<script src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+var affairType = '户口'
+        $.post(
+            "affairs.do",
+            {
+              "type":affairType
+            },
+            function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    var tr = '<tr>' +
+                        '<td>' + data[i].daxiang + '</td>' +
+                        '<td>' + data[i].banlishixiang + '</td>' +
+                        '<td>' + data[i].department + '</td>' +
+                        '<td><span style="color: #1E9FFF" onclick="internetConsult(' + data[i].id +
+                        ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="dealAffairs(' + data[i].id +
+                        ')">网上办理</span></td>' +
+                        '</tr>';
+                    $(".hujihukou").append(tr);
+                }
+            },
+            "json"
+        )
+    //====================
+    $(".header").load("header.html");
+    $(".footer").load("footer.html");
+</script>
 
-			$(function() {
-				$.post(
-						"hujihukou.do",
-						function(data) {
-							for (var i = 0; i < data.length; i++) {
-								var tr = '<tr>' +
-										'<td>' + data[i].daxiang + '</td>' +
-										'<td>' + data[i].banlishixiang + '</td>' +
-										'<td>' + data[i].department + '</td>' +
-										'<td><a class="" onclick="getValue(\'' + data[i].exist + '\',' + data[i].id +
-										')">网上咨询</a><button class="layui-btn layui-btn-normal" onclick="returnBike(\'' + data[i].exist + '\',' +
-										data[i].id + ')">网上办理</button></td>' +
-										'</tr>';
-								$(".budongzichan").append(tr);
-							}
-						},
-						"json"
-				)
-			})
-			$(function(){
-				$(".header").load("header.html");
-				$(".footer").load("footer.html");
-			})
-		</script>
-
-	</body>
+</body>
 
 </html>

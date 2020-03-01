@@ -6,14 +6,7 @@ import java.util.List;
 
 public interface GerenfuwuService {
 
+    int dealAffairs(PersonAffairs personAffairs) throws Exception;
 
-    List<Visa> huzhaoqianzheng () throws Exception;
-
-    List<Budongzichan> budongzichan () throws Exception;
-
-    List<Marriage> marriage() throws Exception;
-
-    List<Traffic> traffic() throws Exception;
-
-    int applyVisa(PersonAffairs personAffairs) throws Exception;
+    List<Affairs> affairsShow(String type) throws Exception;
 }

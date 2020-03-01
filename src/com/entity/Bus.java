@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 public class Bus {
 
-    private  int busId;
+    private  int busID;
     private String originStation;
     private String lastStation;
     private String passStation;

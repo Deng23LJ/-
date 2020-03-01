@@ -1,129 +1,87 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>交通</title>
-		<link rel="stylesheet" href="css/layui.css" media="all">
-		<link rel="stylesheet" href="css/box/base.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>交通</title>
+    <link rel="stylesheet" href="css/layui.css" media="all">
+    <link rel="stylesheet" href="css/box/base.css"/>
 
 
-	</head>
+</head>
 
-	<body>
-		<!--引入导航栏-->
-		<div class="header"></div>
+<body>
+<!--引入导航栏-->
+<div class="header"></div>
 
-		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
-			<legend>交通</legend>
-		</fieldset>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+    <legend>交通</legend>
+</fieldset>
 
-		<div class="box">
-			<table class="layui-table traffic" lay-skin="line">
-				<colgroup>
-					<col width="150">
-					<col width="200">
-					<col>
-				</colgroup>
-				<thead>
-					<tr>
-						<th>大项</th>
-						<th>办理项</th>
-						<th>部门</th>
-						<th>操作</th>
+<div class="box">
+    <table class="layui-table traffic" lay-skin="line">
+        <colgroup>
+            <col width="300">
+            <col width="300">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>大项</th>
+            <th>办理项</th>
+            <th>部门</th>
+            <th>操作</th>
 
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>
-
-
-		<div class="footer"></div>
-
-		<script type="text/javascript">
-			$(function() {
-				$.post(
-					"traffic.do",
-					function(data) {
-						for (var i = 0; i < data.length; i++) {
-							var tr = '<tr>' +
-								'<td>' + data[i].daxiang + '</td>' +
-								'<td>' + data[i].banlishixiang + '</td>' +
-								'<td>' + data[i].department + '</td>' +
-								'<td><button class="layui-btn layui-btn-normal" onclick="getValue(\'' + data[i].exist + '\',' + data[i].id +
-								')">网上咨询</button><button class="layui-btn layui-btn-normal" onclick="returnBike(\'' + data[i].exist + '\',' +
-								data[i].id + ')">网上办理</button></td>' +
-								'</tr>';
-							$(".traffic").append(tr);
-						}
-					},
-					"json"
-				)
-			})
-			//骑车
-			function getValue(value, id) {
-				if (value == "已借") {
-					alert("自行车已经被借走！")
-					return
-				}
-				ride(value, id);
-			}
-
-			function ride(value, id) {
-				$.get(
-					"ride.do", {
-						"exist": value,
-						"id": id,
-					},
-					function(data) {
-						if (data.success) {
-							alert(data.message)
-							location.reload()
-						} else {
-							alert(data.message)
-							location.reload()
-						}
-					}, "json")
-			}
-			//还车
-			function returnBike(bike, bikeid) {
-				if (bike == "空闲") {
-					return
-				}
-				returnBike(bike, bikeid)
-			}
-
-			function returnBike(bike, bikeid) {
-				$.get(
-					"return.do", {
-						"exist": bike,
-						"id": bikeid,
-					},
-					function(data) {
-						if (data.success) {
-							alert(data.message)
-							location.reload()
-						} else {
-							alert(data.message)
-							location.reload()
-						}
-					}, "json")
-			}
-		</script>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
 
 
-		<script src="layui.js"></script>
+<div class="footer"></div>
 
-		<script src="js/jquery-2.1.0.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-				$(".header").load("header.html");
-				$(".footer").load("footer.html");
-			})
-		</script>
 
-	</body>
+<script src="layui.js"></script>
+<script src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+    var affairType = '交通'
+    $.post(
+        "affairs.do",
+        {
+          "type":affairType
+        },
+        function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var tr = '<tr>' +
+                    '<td>' + data[i].daxiang + '</td>' +
+                    '<td>' + data[i].banlishixiang + '</td>' +
+                    '<td>' + data[i].department + '</td>' +
+                    '<td><span style="color: #1E9FFF" onclick="internetConsult(' + data[i].id +
+                    ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="dealAffairs(' + data[i].id +
+                    ')">网上办理</span></td>' +
+                    '</tr>';
+                $(".traffic").append(tr);
+            }
+        }, "json")
+
+    function internetCounsel(){
+        window.location.href="counsel.html"
+    }
+
+    function dealAffairs(){
+        window.location.href="affairsDeal.html"
+    }
+
+
+
+
+    //===========================
+    $(".header").load("header.html");
+    $(".footer").load("footer.html");
+</script>
+
+</body>
 
 </html>
