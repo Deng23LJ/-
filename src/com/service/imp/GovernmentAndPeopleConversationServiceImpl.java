@@ -1,23 +1,21 @@
 package com.service.imp;
 
 import com.entity.Chat;
-import com.entity.JsonResult;
-import com.mapper.ZhengminhudongMapper;
-import com.service.ZhengminhudongService;
+import com.mapper.GovernmentAndPeopleConversationMapper;
+import com.service.GovernmentAndPeopConversationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 @Service
-public class ZhengminhudongServiceImpl implements ZhengminhudongService {
+public class GovernmentAndPeopleConversationServiceImpl implements GovernmentAndPeopConversationService {
 
     @Autowired
-    private ZhengminhudongMapper zhengminhudongMapper;
+    private GovernmentAndPeopleConversationMapper zhengminhudongMapper;
 
     @Override
     public void suggestion(String username,String content) throws Exception {

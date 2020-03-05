@@ -18,7 +18,7 @@ public class HomeController {
 
     @Autowired
     private HomeService homeService;
-    //首页新闻展示方法
+    //首页新闻展示
     @RequestMapping("homeNewsDisplay.do")
     public JSONObject homeNewsDisplay(String type , @RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="5") int limit) throws Exception {
         String name = new String(type.getBytes("ISO-8859-1"),"UTF-8");
@@ -30,6 +30,7 @@ public class HomeController {
         json.put("code",0);
         return json;
     }
+//    ===========================================
 
 
 

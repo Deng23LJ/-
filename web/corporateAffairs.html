@@ -22,49 +22,41 @@
 
 		<div class="w" style="width: 1041px;margin-bottom:50px">
 			<div class="clearfix" id="reduItems">
-				<div class="main_reduItem" onclick="openReduDetailWindow('05', '00')">
-					<div class="reduItem">
-						<div class="div_img"><img src="images/farenfuwu/chuangyefuwu.png"></div>
-						<div class="div_text">
-							<div class="text_title">创业服务</div>
-							<div onclick="openReduListWindow('050101', '0501', '2')" class="text_item">创业补贴</div>
-						</div>
-					</div>
-				</div>
-				<div class="main_reduItem" onclick="openReduDetailWindow('07', '00')">
+				
+				<div class="main_reduItem" onclick="affairsDeal()">
 					<div class="reduItem">
 						<div class="div_img"><img src="images/farenfuwu/qiyejingying.png"></div>
 						<div class="div_text">
 							<div class="text_title">企业经营</div>
-							<div onclick="openReduListWindow('070101', '0701', '2')" class="text_item">内资企业设立登记</div>
+							<div onclick="openReduListWindow('070101', '0701', '2')" class="text_item">重大危险源备案</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="main_reduItem" onclick="openReduDetailWindow('10', '00')">
+				<div class="main_reduItem" onclick="affairsDeal()">
 					<div class="reduItem">
 						<div class="div_img"><img src="images/farenfuwu/jiuyefuwu.png"></div>
 						<div class="div_text">
-							<div class="text_title">就业服务</div>
+							<div class="text_title">人力资源</div>
 							<div onclick="openReduListWindow('100202', '1002', '2')" class="text_item">劳动仲裁</div>
 						</div>
 					</div>
 				</div>
-				<div class="main_reduItem" onclick="openReduDetailWindow('11', '00')">
+				<div class="main_reduItem" onclick="affairsDeal()">
 					<div class="reduItem">
 						<div class="div_img"><img src="images/farenfuwu/qiyefuwu.png"></div>
 						<div class="div_text">
-							<div class="text_title">企业服务</div>
-							<div onclick="openReduListWindow('110301', '1103', '2')" class="text_item">重大危险源备案</div>
+							<div class="text_title">设立变更</div>
+							<div onclick="openReduListWindow('110301', '1103', '2')" class="text_item">内资企业设立登记</div>
 						</div>
 					</div>
 				</div>
-				<div class="main_reduItem" onclick="openReduDetailWindow('09', '00')">
+				<div class="main_reduItem" onclick="affairsDeal()">
 					<div class="reduItem">
 						<div class="div_img"><img src="images/farenfuwu/qitafuwu.png"></div>
 						<div class="div_text">
-							<div class="text_title">其他服务</div>
-							<div onclick="openReduListWindow('090303', '0903', '2')" class="text_item">国家职业资格证书查询</div>
+							<div class="text_title">资质认证</div>
+							<div onclick="openReduListWindow('090303', '0903', '2')" class="text_item">企业资质管理</div>
 						</div>
 					</div>
 				</div>
@@ -74,10 +66,11 @@
 		<div class="footer"></div>
 		<script src="js/jquery-2.1.0.min.js"></script>
 		<script type="text/javascript">
-			$(function(){
+			function affairsDeal(){
+				window.location.href="corperateAffairsDeal.html"
+			}
 				$(".header").load("header.html");
 				$(".footer").load("footer.html");
-			})
 		</script>
 
 

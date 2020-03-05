@@ -1,8 +1,8 @@
 package com.service.imp;
 
 import com.entity.News;
-import com.mapper.InformationMapper;
-import com.service.InformationService;
+import com.mapper.NewsMapper;
+import com.service.NewsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class InformationServiceImpl implements InformationService {
+public class NewsServiceImpl implements NewsService {
     @Autowired
-    private InformationMapper informationMapper;
+    private NewsMapper informationMapper;
 
     @Override
     public List<News> hotNews(String type,int page,int limit) throws Exception {

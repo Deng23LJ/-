@@ -2,7 +2,7 @@ package com.controller;
 
 
 import com.entity.Chat;
-import com.service.ZhengminhudongService;
+import com.service.GovernmentAndPeopConversationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +13,12 @@ import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 
 @RestController
-public class ZhengminhudongController {
+public class GovernmentAndPeopleConversationController {
     @Autowired
-    private ZhengminhudongService zhengminhudongService;
+    private GovernmentAndPeopConversationService zhengminhudongService;
 
 
     //咨询服务

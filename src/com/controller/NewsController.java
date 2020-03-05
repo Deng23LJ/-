@@ -3,8 +3,7 @@ package com.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.entity.News;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
-import com.service.InformationService;
+import com.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ZixunzhuantiController {
+public class NewsController {
     @Autowired
-    private InformationService informationService;
+    private NewsService informationService;
 
     //热门资讯
     @RequestMapping("hotNews.do")

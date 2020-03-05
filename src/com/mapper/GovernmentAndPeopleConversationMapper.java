@@ -5,7 +5,7 @@ import com.entity.Chat;
 import java.util.List;
 import java.util.Map;
 
-public interface ZhengminhudongMapper {
+public interface GovernmentAndPeopleConversationMapper {
     void suggestion(Map<String, Object> map) throws Exception;
 
     void complaint(Map<String, Object> map) throws Exception;

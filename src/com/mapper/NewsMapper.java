@@ -5,7 +5,7 @@ import com.entity.News;
 import java.util.List;
 import java.util.Map;
 
-public interface InformationMapper {
+public interface NewsMapper {
     List<News> hotNews(Map<String, Object> map) throws Exception;
 
     List<News> businessNews(Map<String, Object> map) throws Exception;

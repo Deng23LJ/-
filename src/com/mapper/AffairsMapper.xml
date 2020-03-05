@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="uTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.AffairsMapper">
+
+    <insert id="personAffairsDeal" parameterType="PersonAffairs">
+         insert into personAffairs values (null,#{type},#{username},#{transactionDate},#{IDcard},0,0,#{remark})
+    </insert>
+
+    <select id="personAffairsShow" parameterType="String" resultType="Affairs">
+        select * from affairs where type = #{type}
+    </select>
+
+    <insert id="corperateAffairsDeal" parameterType="CorperateAffairs">
+         insert into corperateAffairs values (#{companyname},#{director},#{type},#{address},#{other})
+    </insert>
+</mapper>

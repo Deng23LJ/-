@@ -7,7 +7,7 @@ import jdk.nashorn.internal.runtime.ECMAException;
 import java.util.List;
 import java.util.Map;
 
-public interface ZhengminhudongService {
+public interface GovernmentAndPeopConversationService {
 
 
     void suggestion(String username,String content) throws Exception;
