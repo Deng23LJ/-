@@ -11,6 +11,7 @@ public class News {
     private String type;
     private String title;
     private String content;
+    private int id;
 
 
 }

@@ -1,6 +1,7 @@
-package com.controller.FIleDeal;
+package com.controller;
 
-import com.controller.FIleDeal.DownLoadUtils;
+import com.utils.DownLoadUtils;
+import com.utils.DownLoadUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,6 +20,7 @@ public class FileDownloadController {
     public void singDownload(HttpServletRequest request, HttpServletResponse response,String filename) throws IOException {
 //        获取文件名
 //        获取文件在项目中的具体路径
+        System.out.println(filename);
         request.setCharacterEncoding("utf-8");
         ServletContext servletContext = request.getServletContext();
         String realPath = servletContext.getRealPath("download/" + filename);

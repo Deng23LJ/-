@@ -30,4 +30,19 @@ public class HomeServiceImpl implements HomeService {
     public int homeNewsCount(String type) throws Exception {
         return homeNewsMapper.homeNewsCount(type);
     }
+
+    @Override
+    public List<News> findTypeNews(String type) throws Exception {
+        return homeNewsMapper.findTypeNews(type);
+    }
+
+    @Override
+    public News findNewsDetail(int id) throws Exception {
+        return homeNewsMapper.findNewsDetail(id);
+    }
+
+    @Override
+    public int findCount(String type) throws Exception {
+        return homeNewsMapper.findCount(type);
+    }
 }

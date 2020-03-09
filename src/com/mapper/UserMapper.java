@@ -1,8 +1,10 @@
 package com.mapper;
 
+import com.entity.PersonAffairs;
 import com.entity.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserMapper {
@@ -15,4 +17,10 @@ public interface UserMapper {
     User updateResume(String username) throws Exception;
 
     void update(User user) throws Exception;
+
+    List<PersonAffairs> findMyAffair(Map<String, Object> map) throws Exception;
+
+    int findMyAffairCount(String name) throws Exception;
+
+    void updatePicture(Map<String,Object> map) throws Exception;
 }

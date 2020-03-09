@@ -13,9 +13,6 @@
             <a href="home.html">网站首页</a>
         </li>
         <li class="layui-nav-item">
-            <a href="news.html">资讯专题</a>
-        </li>
-        <li class="layui-nav-item">
             <a href="cityService.html">城市服务</a>
             <dl class="layui-nav-child">
                 <dd>
@@ -49,37 +46,49 @@
                     <a href="regist.html">注册</a>
                 </dd>
                 <dd>
-                    <a href="safetyManagement.html">安全管理</a>
+                    <a href="safetyManagement.html">我的</a>
                 </dd>
                 <dd>
-                    <a onclick="exit()">退出</a>
+                    <a><span onclick="exit()">退出</span></a>
                 </dd>
             </dl>
         </li>
+        <li class="layui-nav-item" style="float:right;">
+            <img src="images/user/img1.jpg" alt="" id="picture" class="layui-nav-img"/>
+        </li>
+
     </ul>
 </header>
-<script src="layui.js"></script>
+
+
+<script src="layui.all.js"></script>
 <script src="js/jquery-2.1.0.min.js"></script>
 <!--导入js文件-->
 <script type="text/javascript">
-    layui.use(['element'], function () {
-
-    });
-
-    $(function () {
+    layui.use(['jquery','element','layer'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
         $.post(
             "showUsername.do",
             function (data) {
-                if (data == "未登录") {
+                if (data.name==null){
                     return
+                }else{
+                    $("#picture").attr("src",data.picture);
+                    $("#user").html(data.name);
                 }
-                $("#user").html(data);
-            },
-            "text"
+            }, "json")
+
+    });
+    function exit() {
+        $.post(
+            "exit.do",
+            function (json) {
+                layer.msg(json)
+                location.reload();
+            }
         )
-    })
-
-
+    }
 </script>
 </body>
 </html>

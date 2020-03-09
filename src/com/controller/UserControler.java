@@ -1,6 +1,8 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.entity.JsonResult;
+import com.entity.PersonAffairs;
 import com.entity.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import sun.rmi.runtime.Log;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class UserControler {
@@ -33,10 +36,23 @@ public class UserControler {
             return 0;
         } else {
            session.setAttribute("name", login.getUsername());
+           session.setAttribute("picture",login.getPicture());
            return 1;
         }
     }
 
+    //退出登录
+    @RequestMapping("exit.do")
+    public String exit(HttpSession session){
+       try {
+           session.removeAttribute("name");
+           return "退出成功！";
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+           return "退出失败！";
+    }
     //注册操作
     @RequestMapping("/regist.do")
     public int regist(User user) throws Exception {
@@ -60,14 +76,14 @@ public class UserControler {
 
     }
 
-    @RequestMapping(value = "showUsername.do", produces = {"application/text;charset=UTF-8"})
-    public String showUsername(HttpSession session) throws IOException {
+    @RequestMapping("showUsername.do")
+    public JSONObject showUsername(HttpSession session) throws IOException {
         String username = (String)session.getAttribute("name");
-        if (username == null) {
-            return "未登录";
-        }else{
-            return username;
-        }
+        String picture = (String)session.getAttribute("picture");
+        JSONObject json = new JSONObject();
+        json.put("name",username);
+        json.put("picture",picture);
+        return json;
     }
 
 
@@ -85,5 +101,18 @@ public class UserControler {
         int updateResult = userService.update(user);
         return updateResult;
 
+    }
+
+    //用户办理事务展示
+    @RequestMapping("findMyAffair.do")
+    public JSONObject findMyAffair(HttpSession session,int page,int limit) throws Exception{
+        List<PersonAffairs> personAffairsList = userService.findMyAffair(session,page,limit);
+        int count = userService.findMyAffairCount(session);
+        JSONObject json = new JSONObject();
+        json.put("code",0);
+        json.put("msg","我的事务");
+        json.put("count",count);
+        json.put("data",personAffairsList);
+        return json;
     }
 }

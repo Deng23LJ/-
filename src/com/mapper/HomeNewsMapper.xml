@@ -8,4 +8,16 @@
     <select id="homeNewsCount" parameterType="java.lang.String" resultType="int">
         select count(*) from news where type = #{type}
     </select>
+    
+    <select id="findTypeNews" resultType="News" parameterType="String">
+        select * from news where type = #{type};
+    </select>
+    
+    <select id="findNewsDetail" resultType="News" parameterType="int">
+        select * from news where id = #{id};
+    </select>
+
+    <select id="findCount" resultType="int" parameterType="String">
+        select  count(*) from news where type = #{type};
+    </select>
 </mapper>

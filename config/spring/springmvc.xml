@@ -53,14 +53,15 @@
 <!--	</bean>-->
 
 	<!-- Multipart解析器 -->
-	<bean id="multipartResolver"
-		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 设置上传文件的最大尺寸为5MB -->
-		<property name="maxUploadSize">
-			<value>5242880</value>
-		</property>
+	<!-- 配置springmvc对文件上传的支持 -->
+	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置文件名的编码 -->
+		<property name="defaultEncoding" value="utf-8"></property>
+		<!-- 配置最上传文件的支持  20M -->
+		<property name="maxUploadSize" value="20971520"></property>
+		<!-- 设置文件上传的临时目录 -->
+		<property name="uploadTempDir"  value="upload"/>
 	</bean>
-
 
 
 </beans>

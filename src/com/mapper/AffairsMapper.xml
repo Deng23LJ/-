@@ -3,7 +3,7 @@
 <mapper namespace="com.mapper.AffairsMapper">
 
     <insert id="personAffairsDeal" parameterType="PersonAffairs">
-         insert into personAffairs values (null,#{type},#{username},#{transactionDate},#{IDcard},0,0,#{remark})
+         insert into personAffairs values (null,#{type},#{username},#{transactionDate},#{IDcard},'待审','待审',#{remark})
     </insert>
 
     <select id="personAffairsShow" parameterType="String" resultType="Affairs">

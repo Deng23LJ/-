@@ -13,7 +13,7 @@ public class PersonAffairs {
     private String username;
     private String transactionDate;
     private String IDcard;
-    private int sectionA;
-    private int sectionB;
+    private String sectionA;
+    private String sectionB;
     private String remark;
 }

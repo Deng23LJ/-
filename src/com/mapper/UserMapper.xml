@@ -20,5 +20,17 @@
     <update id="update" parameterType="com.entity.User">
     update user set password=#{password},phone=#{phone},email=#{email},address=#{address} where username=#{username}
     </update>
+
+    <select id="findMyAffair" resultType="PersonAffairs" parameterType="map">
+        select * from personaffairs where username = #{name}
+    </select>
+
+    <select id="findMyAffairCount" resultType="int" parameterType="String">
+        SELECT count(*) FROM personaffairs where username = #{name};
+    </select>
+<!--    更换用户头像-->
+    <update id="updatePicture" parameterType="map">
+        update user set picture = #{pictureAddress} where username = #{username}
+    </update>
 </mapper>
 

@@ -1,176 +1,325 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>安全管理</title>
-    <link rel="stylesheet" href="css/layui.css" media="all">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人主页</title>
+		<link rel="stylesheet" href="css/layui.css" media="all">
+		<style type="text/css">
+			.content {
+				width: 1200px;
+				height: 500px;
+				margin: 0 auto;
+			}
+			.touxiang{
+				width: 400px;
+				height: 400px;
+				float: left;
 
-<body>
-<!--引入导航栏-->
-<div class="header"></div>
+			}
+			.portrait {
+				height: auto;
+				float: left;
+				padding: 100px;
+			}
+			.personInformation {
+				width: 600px;
+				padding: 20px;
+				height: 200px;
+				float: left;
+			}
+            .person{
+                border: 0px;
+            }
+		</style>
+	</head>
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
-    <legend>修改资料</legend>
-</fieldset>
+	<body>
+		<!-- 头部-->
+		<div class="header"></div>
 
-<div style="padding-left: 150px; padding-right: 150px;">
+		<!-- 主体 -->
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
+			<legend>个人主页</legend>
+		</fieldset>
+
+		<div class="mainBoby">
+			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+				<ul class="layui-tab-title">
+					<li class="layui-this">我的信息</li>
+					<li>我的办件</li>
+					<li>我的材料</li>
+					<li>账户设置</li>
+				</ul>
+				<div class="layui-tab-content">
+
+					<div class="layui-tab-item layui-show">
+<!--我的信息-->
+                        <div style="padding: 20px; background-color: #F2F2F2;">
+                            <div class="layui-card">
+                                <div class="layui-card-header">我的信息</div>
+                                <div class="layui-card-body">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">姓名</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="username" id="username" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">密码</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="password" id="password" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">性别</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="sex" id="sex" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">年龄</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="age" id="age" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">电话</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="phone" id="phone" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">地址</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="address" id="address" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">email</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="email" id="email" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">用户等级</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="grade" id="grade" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input person">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="layui-tab-item">
+<!--						我的办件-->
+						<table id="banjian" lay-filter="banjian"></table>
+					</div>
+					<div class="layui-tab-item">
+<!--						我的材料-->
+						<div class="layui-form-item">
+							<label class="layui-form-label">下载文件</label>
+							<div class="layui-input-block">
+								<input type="text" name="file" id="file" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input person">
+							</div>
+						</div>
+
+						<button type="button" 	class="layui-btn layui-btn-radius layui-btn-warm">点击下载</button>
+					</div>
+					<div class="layui-tab-item">
+<!--					   账户设置-->
+						<div class="content">
+							<div class="touxiang">
+								<div class="portrait">
+									<div class="layui-upload">
+										<button type="button" class="layui-btn" id="uploadPicture">更换头像</button>
+										<div class="layui-upload-list">
+											<img class="layui-upload-img" src="E:\upload\2020-03-09\202003091244486995066.bmp" width="100" height="100" id="demo1">
+											<p id="demoText"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="personInformation">
+								<div class="layui-form-item">
+									<label class="layui-form-label">姓名</label>
+									<div class="layui-input-block">
+										<input type="text" name="username" id="username" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">密码</label>
+									<div class="layui-input-block">
+										<input type="text" name="password" id="password" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">性别</label>
+									<div class="layui-input-block">
+										<input type="text" name="sex" id="sex" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">年龄</label>
+									<div class="layui-input-block">
+										<input type="text" name="age" id="age" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">电话</label>
+									<div class="layui-input-block">
+										<input type="text" name="phone" id="phone" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">地址</label>
+									<div class="layui-input-block">
+										<input type="text" name="address" id="address" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">email</label>
+									<div class="layui-input-block">
+										<input type="text" name="email" id="email" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">用户等级</label>
+									<div class="layui-input-block">
+										<input type="text" name="grade" id="grade" readonly="readonly" required lay-verify="required" autocomplete="off" class="layui-input xinxi">
+									</div>
+								</div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" id="update" lay-submit lay-filter="formDemo">立即修改</button>
+                                    </div>
+                                </div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 尾部 -->
+		<div class="footer"></div>
+
+		<!-- js -->
+		<script src="layui.js"></script>
+		<script type="text/javascript">
+			layui.use(['laydate','upload','jquery','table'], function() {
+				var $ = layui.jquery;
+				var table = layui.table;
+				var laydate = layui.laydate;
+				var upload = layui.upload;
+				//日期组件
+				laydate.render({
+					elem: '#test1',
+					theme: 'blue'
+				});
+				//我的办件
+				table.render({
+					elem:"#banjian",
+					url:"findMyAffair.do",
+					limit:8,
+					page:true,
+					cols:[[
+						{field:'transactionDate',title:'办理日期'},
+						{field:'type',title:'办理项目'},
+						{field:'sectionA',title:'A部门'},
+						{field:'sectionB',title:'B部门'}
+					]]
+				})
+				//普通图片上传
+				var uploadInst = upload.render({
+					elem: '#uploadPicture'
+					,url: 'file/upload.do'
+					,accept:'images'
+					,acceptMime:'image/*'
+					,auto:true//是否选择文件之后自动上传
+					,field:'mf' //表单的name值
+					,before: function(obj){
+						//预读本地文件示例，不支持ie8
+						obj.preview(function(index, file, result){
+							$('#demo1').attr('src', result); //图片链接（base64）
+						});
+					}
+					,done: function(res){
+						//如果上传失败
+						if(res.code > 0){
+							return layer.msg('上传失败');
+						}
+						//上传成功
+						layer.msg("上传成功");
+					}
+					,error: function(){
+						//演示失败状态，并实现重传
+						var demoText = $('#demoText');
+						demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+						demoText.find('.demo-reload').on('click', function(){
+							uploadInst.upload();
+						});
+					}
+				});
 
 
-    <h2 style="text-align: center" id="userGrade"></h2>
-    <br>
+				//个人信息展示
+				$.post(
+						"updateResume.do",
+						function(data) {
+							$("#username").val(data.username)
+							$("#password").val(data.password)
+							$("#sex").val(data.sex)
+							$("#age").val(data.age)
+							$("#phone").val(data.phone)
+							$("#address").val(data.address)
+							$("#email").val(data.email)
+							$("#grade").val(data.grade)
+                            $("#demo1").attr("src",data.picture);
+						}
+				)
+				//修改资料
+				$("#update").click(function() {
+				    var username = $("#username").val()
+					var password = $("#password").val();
+					var phone = $("#phone").val();
+					var address = $("#address").val();
+					var email = $("#email").val()
+					if (username == "") {
+						alert("请登录！")
+						window.location.href = "login.html";
+					} else {
+						$.post(
+								"update.do",
+								{
+								    "username":username,
+									"password": password,
+									"phone": phone,
+									"address": address,
+									"email": email
 
-    <div class="layui-form-item">
-        <label class="layui-form-label">姓名</label>
-        <div class="layui-input-inline">
-            <input type="text" readonly="readonly" name="username" id="username" required lay-verify="required"
-                   placeholder="请输入用户名" autocomplete="off"
-                   class="layui-input">
-        </div>
-        <div class="layui-form-mid layui-word-aux username-check"></div>
+								},
+								function(data) {
+									if (data == 1) {
+										alert("修改成功")
+										location.reload();
+									} else {
+										alert("修改失败，请重试！")
+										location.reload();
+									}
+								}, "json")
+					}
+				})
+				//===========================================
+				$(".header").load("header.html");
+				$(".footer").load("footer.html");
+			});
+		</script>
 
-
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
-        <div class="layui-input-inline">
-            <input type="password" name="password" id="password" required lay-verify="required" placeholder="请输入密码"
-                   autocomplete="off" class="layui-input">
-        </div>
-        <div class="layui-form-mid layui-word-aux password-check">密码由数字、字母、符号构成</div>
-    </div>
-
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">性别</label>
-        <div class="layui-input-block">
-            <input type="text" name="=sex" readonly="readonly" id="sex" required lay-verify="required"
-                   placeholder="请输入性别" autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-inline">
-        <label class="layui-form-label">出生日期</label>
-        <div class="layui-input-block">
-            <input type="text" readonly="readonly" class="layui-input age" id="test1" placeholder="yyyy-MM-dd">
-        </div>
-    </div>
-    <br/>
-    <br/>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">电话</label>
-        <div class="layui-input-inline">
-            <input type="text" name="phone" id="phone" required lay-verify="required" placeholder="请输入联系电话"
-                   autocomplete="off"
-                   class="layui-input">
-        </div>
-        <div class="layui-form-mid layui-word-aux phone-check"></div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">地址</label>
-        <div class="layui-input-block">
-            <input type="text" name="address" id="address" required lay-verify="required" placeholder="请输入地址"
-                   autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">email</label>
-        <div class="layui-input-block">
-            <input type="email" name="email" id="email" required lay-verify="required" placeholder="请输入email"
-                   autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn layui-btn-normal" id="update" lay-submit lay-filter="formDemo">修改资料</button>
-
-        </div>
-    </div>
-
-
-</div>
-
-
-<div class="footer"></div>
-
-
-<script src="layui.js"></script>
-<script src="js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
-        laydate.render({
-            elem: '#test1',
-            theme: 'blue'
-        });
-    });
-    //			================================
-    //个人信息展示
-    $.post(
-        "updateResume.do",
-        function (data) {
-            $("#username").val(data.username)
-            $("#password").val(data.password)
-            $("#sex").val(data.sex)
-            $(".age").val(data.age)
-            $("#phone").val(data.phone)
-            $("#address").val(data.address)
-            $("#email").val(data.email)
-            $("#userGrade").html("用户等级：" + data.grade)
-
-        }
-    )
-    //======================================
-    //修改资料
-    $("#update").click(function () {
-        var name = $("#username").val();
-        var password = $("#password").val();
-        var phone = $("#phone").val();
-        var address = $("#address").val();
-        var email = $("#email").val()
-        if (name == "") {
-            alert("请登录！")
-            window.location.href = "login.html";
-        } else {
-            $.post(
-                "update.do",
-                {
-                    "username": name,
-                    "password": password,
-                    "phone": phone,
-                    "address": address,
-                    "email": email
-
-                },
-                function (data) {
-                    if (data == 1) {
-                        alert("修改成功")
-                        location.reload();
-                    } else {
-                        alert("修改失败，请重试！")
-                        location.reload();
-                    }
-                }, "json")
-        }
-    })
-
-    //===========================================
-
-    $(".header").load("header.html");
-    $(".footer").load("footer.html");
-
-</script>
-
-</body>
+	</body>
 
 </html>

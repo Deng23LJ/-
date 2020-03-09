@@ -1,4 +1,4 @@
-package com.controller.FIleDeal;
+package com.utils;
 
 import sun.misc.BASE64Encoder;
 import java.io.UnsupportedEncodingException;
