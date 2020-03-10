@@ -35,26 +35,11 @@ public class HomeController {
         return json;
     }
 
-//    @RequestMapping("homeNewsDisplay.do")
-//    //    ===========================================
-//    public List<News> homeNewsDisplay(String type) throws Exception {
-//        List<News> newsList = homeService.findTypeNews(type);
-//        return newsList;
-//    }
-//
+
    @RequestMapping( "findNewsDetail.do")
     public News findNewsDetail(int id) throws Exception {
         News newsList =  homeService.findNewsDetail(id);
         return newsList;
    }
-//
-//   //寻找新闻的数量
-//    @RequestMapping("findCount.do")
-//    public int findCount(String type) throws Exception{
-//        System.out.println(type);
-//        int count = homeService.findCount(type);
-//        return count;
-//    }
-//
 
 }

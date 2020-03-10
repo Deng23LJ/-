@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.PersonAffairs;
+import com.entity.UploadFile;
 import com.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +24,8 @@ public interface UserMapper {
     int findMyAffairCount(String name) throws Exception;
 
     void updatePicture(Map<String,Object> map) throws Exception;
+
+    List<UploadFile> findMyUploadFile(Map<String, Object> map) throws Exception;
+
+    int findMyUploadFileCount(String user) throws Exception;
 }

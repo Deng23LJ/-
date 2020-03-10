@@ -32,5 +32,12 @@
     <update id="updatePicture" parameterType="map">
         update user set picture = #{pictureAddress} where username = #{username}
     </update>
+<!--    查找用户上传的文件-->
+    <select id="findMyUploadFile" resultType="UploadFile" parameterType="map">
+        select * from uploadfile where u_username = #{user};
+    </select>
+    <select id="findMyUploadFileCount" resultType="int" parameterType="String">
+        select count(*) from uploadfile where u_username = #{user};
+    </select>
 </mapper>
 

@@ -1,6 +1,7 @@
 package com.service;
 
 import com.entity.PersonAffairs;
+import com.entity.UploadFile;
 import com.entity.User;
 
 import javax.servlet.http.HttpSession;
@@ -21,4 +22,8 @@ public interface UserService {
     int findMyAffairCount(HttpSession session) throws Exception;
 
     void updatePicture(String pictureAddress,String username) throws Exception;
+
+    List<UploadFile> findMyUploadFile(int page, int limit) throws Exception;
+
+    int findMyUploadFileCount() throws Exception;
 }

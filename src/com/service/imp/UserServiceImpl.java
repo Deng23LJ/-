@@ -1,14 +1,12 @@
 package com.service.imp;
 
 import com.entity.PersonAffairs;
+import com.entity.UploadFile;
 import com.entity.User;
 import com.mapper.UserMapper;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,7 +19,6 @@ public class UserServiceImpl implements UserService {
 
 
 
-    //进行注入（依赖注入）
     @Autowired
     private UserMapper userMapper;
 
@@ -84,11 +81,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePicture(String pictureAddress,String username) throws Exception {
-        System.out.println("impl+"+pictureAddress);
-        System.out.println("impl+"+username);
         Map<String,Object> map = new HashMap<>();
         map.put("pictureAddress",pictureAddress);
         map.put("username",username);
         userMapper.updatePicture(map);
+    }
+
+
+    @Autowired
+    private HttpServletRequest request;
+    @Override
+    public List<UploadFile> findMyUploadFile(int page, int limit) throws Exception {
+        HttpSession session = request.getSession();
+        String user = (String) session.getAttribute("name");
+        Map<String,Object> map = new HashMap<>();
+        map.put("page",page);
+        map.put("limit",limit);
+        map.put("user",user);
+        return userMapper.findMyUploadFile(map);
+    }
+    @Override
+    public int findMyUploadFileCount() throws Exception {
+        HttpSession session = request.getSession();
+        String user = (String) session.getAttribute("name");
+        System.out.println(user);
+        return userMapper.findMyUploadFileCount(user);
     }
 }

@@ -28,7 +28,7 @@ import com.utils.RandomUtils;
  */
 @Controller
 @RequestMapping("file")
-public class FileController {
+public class FileUploaController {
     @Autowired
     private UserService userService;
     /**
@@ -60,13 +60,13 @@ public class FileController {
         String oldName = mf.getOriginalFilename();
         //根据文件原名得到新名
         String newName = RandomUtils.createFileNameUseTime(oldName);
+//        ==============================图片填入地址数据
         //获取图片路径（绝对路径）
-        pictureAddress = "D:/毕业设计/前台/ssm/web/upload/"+dirName+"/"+newName;
+        pictureAddress = "D:/upload/"+dirName+"/"+newName;
         //修改数据库
         String username = (String) session.getAttribute("name");
-        System.out.println(pictureAddress);
         userService.updatePicture(pictureAddress,username);
-        //-------------
+        //=========================================
         File dest = new File(dirFile, newName);
         mf.transferTo(dest);
 

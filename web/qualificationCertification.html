@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>交通</title>
+    <title>资质认证</title>
     <link rel="stylesheet" href="css/layui.css" media="all">
     <link rel="stylesheet" href="css/box/base.css"/>
 
@@ -15,11 +15,11 @@
 <div class="header"></div>
 
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 15px;margin-bottom: 15px">
-    <legend>交通</legend>
+    <legend>资质认证</legend>
 </fieldset>
 
 <div class="box">
-    <table class="layui-table traffic" lay-skin="line">
+    <table class="layui-table huzhaoqianzheng" lay-skin="line">
         <colgroup>
             <col width="300">
             <col width="300">
@@ -31,7 +31,6 @@
             <th>办理项</th>
             <th>部门</th>
             <th>操作</th>
-
         </tr>
         </thead>
         <tbody>
@@ -39,18 +38,16 @@
     </table>
 </div>
 
-
 <div class="footer"></div>
 
-
-<script src="layui.js"></script>
 <script src="js/jquery-2.1.0.min.js"></script>
+<script src="layui.js"></script>
 <script type="text/javascript">
-    var affairType = '交通'
+    var affairType = '资质认证'
     $.post(
         "personAffairsShow.do",
         {
-          "type":affairType
+            "type":affairType
         },
         function (data) {
             for (var i = 0; i < data.length; i++) {
@@ -59,28 +56,29 @@
                     '<td>' + data[i].banlishixiang + '</td>' +
                     '<td>' + data[i].department + '</td>' +
                     '<td><span style="color: #1E9FFF" onclick="internetConsult(' + data[i].id +
-                    ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="dealAffairs(' + data[i].id +
-                    ')">网上办理</span></td>' +
+                    ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="getMessage(' + data[i].id +
+                    ')">网上办理</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="getDocument()">下载材料</span></td>' +
                     '</tr>';
-                $(".traffic").append(tr);
+                $(".huzhaoqianzheng").append(tr);
             }
         }, "json")
 
-    function internetCounsel(){
-        window.location.href="counsel.html"
+
+    function getMessage(id) {
+
     }
-    //积分查询
-    function dealAffairs(){
-        window.location.href="vehicleViolation.html"
+    //网上咨询
+    function internetConsult(id) {
+        window.location.href = "counsel.html"
+
     }
 
-
-
-
-    //===========================
+    //====================
     $(".header").load("header.html");
     $(".footer").load("footer.html");
+
 </script>
+
 
 </body>
 

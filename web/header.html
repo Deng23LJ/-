@@ -4,9 +4,11 @@
     <meta charset="utf-8"/>
     <title>综合政务服务网</title>
     <link rel="stylesheet" href="css/layui.css" media="all">
+    <script src="js/header.js"></script>
 </head>
 <body>
 <!--头部导航栏-->
+
 <header>
     <ul class="layui-nav layui-bg-blue">
         <li class="layui-nav-item">
@@ -14,20 +16,6 @@
         </li>
         <li class="layui-nav-item">
             <a href="cityService.html">城市服务</a>
-            <dl class="layui-nav-child">
-                <dd>
-                    <a href="bikeSharing.html">共享单车</a>
-                </dd>
-                <dd>
-                    <a href="insuranceAndwelfare.html">五险一金</a>
-                </dd>
-                <dd>
-                    <a href="vehicleViolation.html">车辆违章</a>
-                </dd>
-                <dd>
-                    <a href="busSearch.html">城市公交</a>
-                </dd>
-            </dl>
         </li>
         <li class="layui-nav-item">
             <a href="personAffairs.html">个人服务</a>
@@ -38,57 +26,17 @@
         <li class="layui-nav-item">
             <a href="governmentAndPeopleConversation.html">政民互动</a>
         </li>
-
         <li class="layui-nav-item" lay-unselect="" style="float: right;">
+            <img src="images/user/img1.jpg" alt="" id="pic" class="layui-nav-img"/>
             <a href="login.html" id="user">登录</a>
-            <dl class="layui-nav-child">
-                <dd>
-                    <a href="regist.html">注册</a>
-                </dd>
-                <dd>
-                    <a href="safetyManagement.html">我的</a>
-                </dd>
-                <dd>
-                    <a><span onclick="exit()">退出</span></a>
-                </dd>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                <dd><a href="regist.html">注册</a></dd>
+                <dd><a href="#" id="exit">退出</a></dd>
             </dl>
-        </li>
-        <li class="layui-nav-item" style="float:right;">
-            <img src="images/user/img1.jpg" alt="" id="picture" class="layui-nav-img"/>
         </li>
 
     </ul>
 </header>
 
-
-<script src="layui.all.js"></script>
-<script src="js/jquery-2.1.0.min.js"></script>
-<!--导入js文件-->
-<script type="text/javascript">
-    layui.use(['jquery','element','layer'], function () {
-        var $ = layui.jquery;
-        var layer = layui.layer;
-        $.post(
-            "showUsername.do",
-            function (data) {
-                if (data.name==null){
-                    return
-                }else{
-                    $("#picture").attr("src",data.picture);
-                    $("#user").html(data.name);
-                }
-            }, "json")
-
-    });
-    function exit() {
-        $.post(
-            "exit.do",
-            function (json) {
-                layer.msg(json)
-                location.reload();
-            }
-        )
-    }
-</script>
 </body>
 </html>

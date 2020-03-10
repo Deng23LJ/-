@@ -32,18 +32,28 @@
         <tbody>
         </tbody>
     </table>
-
-
+    <div class="download" style="padding:20px;">
+        <div class="downloadlist" style="margin: 0 auto;text-align: center"></div>
+    </div>
 </div>
+
 
 <div class="footer"></div>
 
+<!--===============-->
 
-<script src="js/jquery-2.1.0.min.js"></script>
+<!--================-->
+
+
 <script src="layui.js"></script>
+<script src="js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
-    var affairType = '教育'
+    layui.use(['layer', 'jquery'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
 
+        //可办理事项展示
+        var affairType = '教育'
         $.post(
             "personAffairsShow.do",
             {
@@ -55,26 +65,31 @@
                         '<td>' + data[i].daxiang + '</td>' +
                         '<td>' + data[i].banlishixiang + '</td>' +
                         '<td>' + data[i].department + '</td>' +
-                        '<td><span style="color: #1E9FFF" onclick="internetConsult(' + data[i].id +
-                        ')">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="dealAffairs(' + data[i].id +
-                        ')">网上办理</span></td>' +
+                        '<td><span style="color: #1E9FFF" onclick="internetConsult()">网上咨询</span>&nbsp;|&nbsp;<span style="color: #1E9FFF" onclick="dealAffair()">下载资料</span></td>' +
                         '</tr>';
                     $(".jiaoyu").append(tr);
                 }
             }, "json")
-
-
-        function internetCounsel() {
-            window.location.href = "counsel.html"
-        }
-
-        function dealAffairs() {
-            window.location.href = "affairsDeal.html"
-        }
-
         //=============================
         $(".header").load("header.html")
         $(".footer").load("footer.html")
+    })
+
+    function internetConsult() {
+        window.location.href = "counsel.html"
+    }
+
+    function dealAffair() {
+        var address = 'download.do?file='
+        $.post("downloadList.do", function (json) {
+            for (var i = 0; i < json.data.length; i++) {
+                console.log(json.data[i])
+                var file = '<div><a href="' + address + json.data[i] + '">' + json.data[i] + '</a></div>'
+                $(".downloadlist").append(file);
+            }
+        }, "json")
+    }
+
 </script>
 
 </body>
